@@ -1,0 +1,20 @@
+1- Sobre etapas.
+    A- crear crud??
+    B- estado inicial o que sea custom siempre?
+
+2- Sobre Usuarios
+    A- necesito tener la logica para implementarla en el formulario
+       (al incluir muchas relaciones con esta tabla.)
+    
+3-  BD
+    3-a Tabla obras
+        A- Agregar campo en la tabla 'obras' para asignar personas.
+        B- Que va en el campo Contratista?. Son users? nombres?
+        C- el campo 'responsable_id (INT)' deberia hacer referencia a 'usuario_id'?
+           es como una manera de agregar personas
+        D- Que ubicacion esa una tabla asi tiene el nombre y las coordenadas, direccionm, link
+    3-b Tabla etapas_obras
+        A- Agregar un campo 'presupuesto' EXTRA en 'Etapa' para imprevistos, etc.
+        
+        B- Agregar al enumerate de 'estado' un estado 'pausado'
+    

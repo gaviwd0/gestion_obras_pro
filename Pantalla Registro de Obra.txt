@@ -1,0 +1,50 @@
+Pantalla: Registro de Obra
+1. Encabezado de la Pantalla
+Título: “Registro de Obra”
+Botones:
+Guardar: Para registrar los datos de la obra.
+Cancelar: Para descartar los cambios y volver al menú principal o listado de obras.
+Barra de progreso (opcional): Para indicar la etapa de registro si el proceso se hace en varias pantallas o pasos.
+2. Formulario Principal de Registro
+A. Información General de la Obra
+
+Nombre de la obra (campo de texto, requerido): Ej. “Construcción de plaza central”
+Ubicación (campo de texto o selección de mapa): Dirección exacta o opción para seleccionar coordenadas en un mapa.
+Contratista (desplegable de opciones o campo de texto): Lista de contratistas disponibles o campo libre.
+Presupuesto asignado (campo numérico, requerido): Presupuesto en la moneda local.
+Fecha de inicio (selector de fecha, requerido): Calendario para seleccionar la fecha.
+Fecha estimada de finalización (selector de fecha, requerido).
+
+B. Etapas y Avance de la Obra
+Etapas de la obra:
+Nombre de la etapa (campo de texto).
+Fecha de inicio y fin de etapa (selectores de fecha).
+Descripción de la etapa (campo de texto grande para notas).
+Estado de la etapa (desplegable): Opción de estados como “No iniciada”, “En progreso”, “Completada”.
+Botón "Agregar Etapa": Permite añadir más etapas a medida que avance el proyecto.
+
+C. Notas de Campo (opcional)
+
+Registro de notas: Área de texto para observaciones específicas del sitio o detalles relevantes.
+Subir documentos: Opción para cargar fotos o documentos en PDF (como permisos o planos).
+
+3. Sección de Control de Permisos y Roles (si aplicable)
+Asignación de responsable (desplegable): Para asignar un usuario específico encargado de la obra.
+Nivel de acceso: Opción para definir si la obra es visible o editable por roles específicos.
+
+4. Visualización de Cronograma (opcional)
+Gráfico de Gantt o Cronograma: Mostrar visualmente el tiempo estimado de cada etapa de la obra y el progreso acumulado.
+5. Sección de Resumen y Costos
+Presupuesto total y gastos acumulados (campos automáticos): Campo para ingresar gastos y cálculo del presupuesto restante.
+Progreso global: Porcentaje de avance calculado según las etapas completadas.
+
+6. Footer / Barra Inferior
+Fecha de última actualización (automático): Registro de la última fecha de modificación del proyecto.
+Acciones: Iconos de ayuda o un botón “Ver historial de cambios” para realizar un seguimiento de las modificaciones.
+
+Notas para el Programador
+Validaciones: Incluir validaciones para campos obligatorios (nombre, ubicación, presupuesto, fechas).
+Eventos de Guardado y Cancelación: Definir lo que sucede en cada caso (confirmación antes de salir sin guardar, mensajes de éxito o error al guardar).
+Roles de acceso: Configurar según el sistema de permisos establecido.
+Interacciones: Asegurar que el usuario pueda agregar, editar y eliminar etapas de obra sin recargar la página.
+Persistencia de Datos: Verificar que los datos guardados se mantengan aunque la sesión se cierre.
