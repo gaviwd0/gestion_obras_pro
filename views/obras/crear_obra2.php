@@ -1,169 +1,25 @@
-<html lang="es"><head>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Obra - Paso a Paso</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .hidden {
-            display: none;
-        }
-
-        .custom-max-width {
-            max-width: 1100px;
-            /* Ancho máximo personalizado */
-        }
-
-        .step {
-            margin-bottom: 20px;
-        }
-
-        .navigation-buttons {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .navbar-custom {
-            background-color: #555555;
-            /* Color gris */
-            color: white;
-            /* Color del texto */
-            padding: 15px;
-            /* Espaciado */
-            text-align: center;
-            /* Centrar el texto */
-            font-weight: bold;
-            /* Negrita */
-            margin-bottom: 20px;
-            /* Espaciado inferior */
-        }
-
-        footer {
-            background-color: #343a40;
-            /* Color de fondo del footer */
-            color: white;
-            /* Color del texto */
-            text-align: center;
-            /* Centrar el texto */
-            padding: 10px 0;
-            /* Espaciado */
-            position: relative;
-            /* Para que el footer no se superponga */
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-    <script>
-        let obraData = {};
-        let etapasData = [];
-        let currentStep = 0;
-
-        function showStep(step) {
-            const steps = document.querySelectorAll('.step');
-            steps.forEach(s => s.classList.add('hidden'));
-            steps[step].classList.remove('hidden');
-
-            // Actualizar botones de navegación
-            document.getElementById('prevBtn').style.display = step === 0 ? 'none' : 'inline';
-            document.getElementById('nextBtn').style.display = step === steps.length - 1 ? 'none' : 'inline';
-            document.getElementById('submitBtn').style.display = step === steps.length - 1 ? 'inline' : 'none';
-        }
-
-        function nextStep() {
-            if (currentStep === 0) {
-                // Guardar datos de la obra
-                obraData = {
-                    nombre_obra: document.getElementById('nombre_obra').value,
-                    ubicacion: document.getElementById('ubicacion').value,
-                    contratista: document.getElementById('contratista').value,
-                    responsable: document.getElementById('responsable').value,
-                    presupuesto: document.getElementById('presupuesto').value,
-                    fecha_inicio: document.getElementById('fecha_inicio').value,
-                    fecha_fin: document.getElementById('fecha_estimada_fin').value
-                };
-            } else if (currentStep === 1) {
-                // Guardar datos de las etapas
-                const nombreEtapa = document.getElementById('nombre_etapa').value;
-                const descripcionEtapa = document.getElementById('descripcion_etapa').value;
-                const fechaInicioEtapa = document.getElementById('fecha_inicio_etapa').value;
-                const fechaFinEtapa = document.getElementById('fecha_fin_etapa').value;
-                const estadoEtapa = document.getElementById('estado_etapa').value;
-
-                if (nombreEtapa && descripcionEtapa) {
-                    etapasData.push({
-                        nombre: nombreEtapa,
-                        descripcion: descripcionEtapa,
-                        fecha_inicio: fechaInicioEtapa,
-                        fecha_fin: fechaFinEtapa,
-                        estado: estadoEtapa
-                    });
-
-                    // Limpiar campos de la etapa
-                    document.getElementById('nombre_etapa').value = '';
-                    document.getElementById('descripcion_etapa').value = '';
-                    document.getElementById('fecha_inicio_etapa').value = '';
-                    document.getElementById('fecha_fin_etapa').value = '';
-                    document.getElementById('estado_etapa').value = '';
-                }
-            }
-
-            currentStep++;
-            showStep(currentStep);
-        }
-
-        function prevStep() {
-            currentStep--;
-            showStep(currentStep);
-        }
-
-        function submitForm() {
-            const notas = document.getElementById('notas').value;
-            const documentos = document.getElementById('documentos').files;
-
-            const formData = new FormData();
-            formData.append('obraData', JSON.stringify(obraData));
-            formData.append('etapasData', JSON.stringify(etapasData));
-            formData.append('notas', notas);
-            for (let i = 0; i < documentos.length; i++) {
-                formData.append('documentos[]', documentos[i]);
-            }
-
-            // Enviar los datos al servidor
-            fetch('/gestion_obras2/controllers/ControladorRegistroObra.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    return response.text(); // Cambia a text() para ver la respuesta cruda
-                })
-                .then(data => {
-                    console.log(data); // Muestra la respuesta en la consola
-                    // Intenta analizar como JSON solo si es válido
-                    try {
-                        const jsonData = JSON.parse(data);
-                        // Manejo de la respuesta exitosa
-                        window.location.href = '/gestion_obras2/views/obras/listado_obras.php';
-                    } catch (error) {
-                        throw new Error('Error al analizar JSON: ' + error.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert(error.message); // Muestra el mensaje de error
-                });
-
-            document.addEventListener('DOMContentLoaded', () => {
-                showStep(currentStep); // Mostrar el primer paso al cargar
-            });
-        }
-    </script>
+    <link rel="stylesheet" href="../../public/css/style_formObras.css"> <!-- Enlace al archivo CSS -->
 </head>
 
 <body>
     <!-- barra de navegacion -->
-    <div class="navbar-custom mb-4"> <!-- Bloque gris -->
+    <div class="navbar-custom"> <!-- Bloque gris -->
         Barra de Navegación
     </div>
-    
+    <div id="alertContainer" class="alert alert-danger d-none" role="alert" style="opacity: 0.9;">
+        <button type="button" class="close" aria-label="Close" onclick="closeAlert()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <span id="alertMessage"></span>
+    </div>
     <div class="container mt-5">
         <!-- Paso 1: Información General de la Obra -->
         <div id="step-1" class="step">
@@ -263,10 +119,10 @@
             <button id="nextBtn" class="m-5 btn btn-primary" onclick="nextStep()" style="display: inline;">Siguiente</button>
             <button id="submitBtn" class="m-5 btn btn-success" onclick="submitForm()" style="display: none;">Enviar</button>
         </div>
-        
-        
+
     </div>
-    <script src="../../public/js/validacionFromCrear_obra.js"></script> <!-- Conectar el archivo JS -->
 
+    <script src="../../public/js/validacionFromCrear_obra.js"></script> <!-- Enlace al archivo JavaScript -->
+</body>
 
-</body></html>
+</html>

@@ -1,0 +1,68 @@
+.hidden {
+    display: none;
+}
+
+.custom-max-width {
+    max-width: 1100px; /* Ancho máximo personalizado */
+}
+
+.step {
+    margin-bottom: 20px;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-custom {
+    background-color: #555555; /* Color gris */
+    color: white; /* Color del texto */
+    padding: 15px; /* Espaciado */
+    padding-bottom: 60px;
+    text-align: center; /* Centrar el texto */
+    font-weight: bold; /* Negrita */
+    margin-bottom: 20px; /* Espaciado inferior */
+    text-align: center;
+}
+
+footer {
+    background-color: #343a40; /* Color de fondo del footer */
+    color: white; /* Color del texto */
+    text-align: center; /* Centrar el texto */
+    padding: 10px 0; /* Espaciado */
+    position: relative; /* Para que el footer no se superponga */
+    bottom: 0;
+    width: 100%;
+}
+
+.alert {
+    background-color: #f8d7da; /* Color de fondo rojo claro */
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050;
+    opacity: 0.9; /* Transparencia */
+    padding: 15px;
+    border: 1px solid #dc3545; /* Color del borde rojo */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #721c24; /* Color de la cruz */
+    text-shadow: 0 1px 0 #fff;
+    opacity: 0.7; /* Opacidad de la cruz */
+}
+
+.close:hover {
+    color: #721c24; /* Color de la cruz al pasar el mouse */
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 1; /* Opacidad completa al pasar el mouse */
+}
