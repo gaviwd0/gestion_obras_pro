@@ -19,10 +19,10 @@
     background-color: #555555; /* Color gris */
     color: white; /* Color del texto */
     padding: 15px; /* Espaciado */
-    padding-bottom: 60px;
+    padding-bottom: 45px;
     text-align: center; /* Centrar el texto */
     font-weight: bold; /* Negrita */
-    margin-bottom: 20px; /* Espaciado inferior */
+    margin-bottom: 5px; /* Espaciado inferior */
     text-align: center;
 }
 

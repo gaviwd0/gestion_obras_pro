@@ -48,3 +48,13 @@ Eventos de Guardado y Cancelación: Definir lo que sucede en cada caso (confirma
 Roles de acceso: Configurar según el sistema de permisos establecido.
 Interacciones: Asegurar que el usuario pueda agregar, editar y eliminar etapas de obra sin recargar la página.
 Persistencia de Datos: Verificar que los datos guardados se mantengan aunque la sesión se cierre.
+
+
+
+TAREAS:
+
+1-  Cronograma
+
+2-  Calcular el procentaje de proceso biendo el estado de las etapas y las fechas de estas, estimaciones.
+
+3- logica de salir con datos
