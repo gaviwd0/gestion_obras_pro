@@ -11,9 +11,7 @@
 
 <body>
     <!-- barra de navegacion -->
-    <div class="navbar-custom"> <!-- Bloque gris -->
-        Barra de Navegación
-    </div>
+    <?php  include '../components/navbar.php'; ?>
     <div id="alertContainer" class="alert alert-danger d-none" role="alert" style="opacity: 0.9;">
         <button type="button" class="close" aria-label="Close" onclick="closeAlert()">
             <span aria-hidden="true">&times;</span>
